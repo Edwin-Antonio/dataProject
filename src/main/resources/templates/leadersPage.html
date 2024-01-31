@@ -1,24 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org"
-                xmlns:sec="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Leaders Page</title>
+    <style>
+        /* Estilos opcionales para mejorar la apariencia del dropdown */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
 </head>
+
 <body>
     <h2>Bienvenido a Leaders Page </h2>
     <p>
         <span sec:authentication="principal.username"></span>
         <br><br>
-        Role(s): <span sec:authentication="principal.authorities"></span>  
+        Role(s): <span sec:authentication="principal.authorities"></span>
     </p>
 
     <hr>
-    <a th:href="@{/}">Back to OPS</a>
+    <label for="opciones">Selecciona una opción para navegar:</label>
+    <select id="opciones" onchange="redirigirUsuario(this.value)">
+        <!-- Opciones del dropdown -->
+        <option value="">Selecciona una opción</option>
+        <option th:value="@{/}">OPS</option>
+        <option value="https://www.ejemplo.com/opcion2">Opción 2</option>
+        <option value="https://www.ejemplo.com/opcion3">Opción 3</option>
+    </select>
     <hr>
+
+
+    <script>
+        function redirigirUsuario(opcionSeleccionada) {
+            // Verifica si se ha seleccionado una opción válida
+            if (opcionSeleccionada !== "") {
+                // Redirige al usuario a la URL correspondiente a la opción seleccionada
+                window.location.href = opcionSeleccionada;
+            }
+        }
+    </script>
 
     <form action="#" th:action="@{/logout}" method="POST">
         <input type="submit" value="logout">
     </form>
 </body>
+
 </html>
