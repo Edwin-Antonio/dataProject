@@ -14,8 +14,8 @@ public class securityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsManager(){
         UserDetails miss1 = User.builder().username("jhon").password("{noop}123").roles("EMPLOYEE").build();
-        UserDetails miss2 = User.builder().username("maria").password("{noop}123").roles("EMPLOYEE").build();
-        UserDetails miss3 = User.builder().username("pablo").password("{noop}123").roles("EMPLOYEE").build();
+        UserDetails miss2 = User.builder().username("maria").password("{noop}123").roles("EMPLOYEE, ADMIN").build();
+        UserDetails miss3 = User.builder().username("pablo").password("{noop}123").roles("EMPLOYEE, MANAGER").build();
         return new InMemoryUserDetailsManager(miss1,miss2,miss3);
     }
 
@@ -33,7 +33,7 @@ public class securityConfig {
                         //Permiso para generar un logout
                         .logout(logout -> logout
                         .permitAll());
-                        
+
         return http.build();
     }
 }
