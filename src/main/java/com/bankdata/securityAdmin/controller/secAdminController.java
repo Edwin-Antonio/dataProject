@@ -11,4 +11,8 @@ public class secAdminController {
      return "homePage";
     }
 
+    @GetMapping("/leaders")
+    public String leadersAdministration(){
+        return "leadersPage";
+    }
 }

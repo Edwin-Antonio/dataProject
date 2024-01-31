@@ -3,10 +3,10 @@
                 xmlns:sec="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>Leaders Page</title>
 </head>
 <body>
-    <h2>Bienvenido a OPS 2 </h2>
+    <h2>Bienvenido a Leaders Page </h2>
     <p>
         <span sec:authentication="principal.username"></span>
         <br><br>
@@ -14,15 +14,7 @@
     </p>
 
     <hr>
-
-    <p>
-        <a th:href="@{/leaders}">Manager Access</a>
-    </p>
-
-    <p>
-        <a th:href="@{/system}">Admin Access</a>
-    </p>
-
+    <a th:href="@{/}">Back to OPS</a>
     <hr>
 
     <form action="#" th:action="@{/logout}" method="POST">
