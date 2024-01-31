@@ -19,7 +19,7 @@ public class securityConfig {
         return new InMemoryUserDetailsManager(miss1,miss2,miss3);
     }
 
-    //Configuración para la autenthificación de usuario con Security
+    //Configuración para la autorización de usuario con Security
     @Bean
     public SecurityFilterChain filterChainLogin(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests(configurer -> configurer
@@ -38,10 +38,10 @@ public class securityConfig {
                         
                         //Permiso para generar un logout
                         .logout(logout -> logout
-                        .permitAll())
+                        .permitAll()
 
                         //Proceso para redirigir accesos denegados
-                        .exceptionHandling(configurer -> configurer
+                        ).exceptionHandling(configurer -> configurer
                         .accessDeniedPage("/access-denied"));
 
         return http.build();
