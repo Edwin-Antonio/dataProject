@@ -2,6 +2,11 @@ package com.bankdata.securityAdmin.security;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,9 +17,19 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class securityConfig {
     // Bean configuration for JDBC connection
+    
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource){
         return new JdbcUserDetailsManager(dataSource);
+    }
+
+    @Bean
+    public DataSource datasource() {
+        return DataSourceBuilder.create()
+          .url("jdbc:mysql://localhost:3306/employes_test")
+          .username("bankdata")
+          .password("bankdata")
+          .build(); 
     }
 
     //Configuración para la autorización de usuario con Security
