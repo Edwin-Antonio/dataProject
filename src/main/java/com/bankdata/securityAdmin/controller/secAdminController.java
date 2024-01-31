@@ -11,8 +11,15 @@ public class secAdminController {
      return "homePage";
     }
 
+    //Mapeo para entrar a pagina de leaders o admins
     @GetMapping("/leaders")
     public String leadersAdministration(){
         return "leadersPage";
+    }
+
+    //Mapeo para accessos denegados
+    @GetMapping("/access-denied")
+    public String accessDenied(){
+        return "accessDeniedPage";
     }
 }

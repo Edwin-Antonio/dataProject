@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+                xmlns:sec="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Denied Page</title>
+</head>
+<body>
+    <h2>Accesso Denegado - Usted no cuenta con los permisos necesarios para acceder a esta pagina, contacte a su gerente o administrador</h2>
+    
+    <hr>
+    <a th:href="@{/}">Back to OPS</a>
+    <hr>
+
+    <form action="#" th:action="@{/logout}" method="POST">
+        <input type="submit" value="logout">
+    </form>
+</body>
+</html>

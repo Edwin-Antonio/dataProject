@@ -38,7 +38,11 @@ public class securityConfig {
                         
                         //Permiso para generar un logout
                         .logout(logout -> logout
-                        .permitAll());
+                        .permitAll())
+
+                        //Proceso para redirigir accesos denegados
+                        .exceptionHandling(configurer -> configurer
+                        .accessDeniedPage("/access-denied"));
 
         return http.build();
     }
