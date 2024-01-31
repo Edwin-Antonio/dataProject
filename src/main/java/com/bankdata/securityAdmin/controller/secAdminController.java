@@ -8,7 +8,7 @@ public class secAdminController {
 
     @GetMapping("/")
     public String loginPage(){
-     return "loginPage";
+     return "homePage";
     }
 
 }

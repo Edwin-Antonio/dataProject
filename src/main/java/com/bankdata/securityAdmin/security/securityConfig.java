@@ -27,8 +27,13 @@ public class securityConfig {
                 .authenticated())
                 .formLogin(form -> form
                         .loginPage("/personalLoginPage")
+                        //Proceso para autentificar un usuario
                         .loginProcessingUrl("/authenticateTheUser")
+                        .permitAll())
+                        //Permiso para generar un logout
+                        .logout(logout -> logout
                         .permitAll());
+                        
         return http.build();
     }
 }
