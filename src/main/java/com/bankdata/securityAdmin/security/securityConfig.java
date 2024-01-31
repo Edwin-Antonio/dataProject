@@ -1,22 +1,20 @@
 package com.bankdata.securityAdmin.security;
 
+import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class securityConfig {
-
+    // Bean configuration for JDBC connection
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager(){
-        UserDetails miss1 = User.builder().username("jhon").password("{noop}123").roles("EMPLOYEE").build();
-        UserDetails miss2 = User.builder().username("maria").password("{noop}123").roles("EMPLOYEE", "MANAGER", "ADMIN").build();
-        UserDetails miss3 = User.builder().username("pablo").password("{noop}123").roles("EMPLOYEE", "MANAGER").build();
-        return new InMemoryUserDetailsManager(miss1,miss2,miss3);
+    public UserDetailsManager userDetailsManager(DataSource dataSource){
+        return new JdbcUserDetailsManager(dataSource);
     }
 
     //Configuración para la autorización de usuario con Security
