@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "cliente")
-public class client {
+public class Client {
     
     //definimos los campos de nuestra tabla
     @Id
@@ -28,12 +28,12 @@ public class client {
 
     //definimos constructores
 
-    public client(){
+    public Client(){
 
     }
 
     //No necesitamos el ID en el constructor ya que en la DB lo tenemos asignado como AUTO_INCREMENT 
-    public client(String firstName, String secondName, String email) {
+    public Client(String firstName, String secondName, String email) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
@@ -78,7 +78,7 @@ public class client {
 
     @Override
     public String toString() {
-        return "client [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", email=" + email
+        return "Client [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", email=" + email
                 + "]";
     }
     

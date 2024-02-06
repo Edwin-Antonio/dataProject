@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.bankdata.securityAdmin.entity.client;
+import com.bankdata.securityAdmin.entity.Client;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -21,13 +21,13 @@ public class clientImpl implements clientDAO {
     }
 
     @Override
-    public List<client> findAll(){
+    public List<Client> findAll(){
 
         // Creamos nuestro query
-        TypedQuery<client> query = entityManager.createNamedQuery("from client", client.class);
+        TypedQuery<Client> query = entityManager.createNamedQuery("from client", Client.class);
 
         // Mandamos a ejecutar el query
-        List<client> clientes = query.getResultList(); 
+        List<Client> clientes = query.getResultList(); 
 
         // retornamos valores
         return clientes;
