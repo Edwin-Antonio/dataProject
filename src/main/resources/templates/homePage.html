@@ -13,7 +13,7 @@
         Role(s): <span sec:authentication="principal.authorities"></span>  
     </p>
 
-    <span th:text="${clentes}"></span>
+    <span th:text="${clientes}"></span>
 
     <hr>
 
@@ -26,7 +26,7 @@
     <div sec:authorize="hasRole('ADMIN')">
 
         <p>
-            <a th:href="@{/system}">Admin Access</a>
+            <a th:href="@{/list}">Admin Access</a>
         </p>
     
     </div>

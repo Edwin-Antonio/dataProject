@@ -8,11 +8,11 @@ public interface clientService {
     List<Client> findAll();
 
     //Mandamos llamar un metodo para encontrar un cliente
-    Client findClient(int id);
+    Client findById(int id);
 
     //Mandamos llamar un metodo para guardar un cliente
-    Client saveClient(Client client);
+    Client save(Client client);
 
     //Mandamos llamar un metodo para eliminar cliente
-    void deleteBy(int id);
+    void deleteById(int id);
 }

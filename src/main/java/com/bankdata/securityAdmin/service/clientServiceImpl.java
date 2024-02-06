@@ -1,46 +1,50 @@
 package com.bankdata.securityAdmin.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bankdata.securityAdmin.dao.clientDAO;
+import com.bankdata.securityAdmin.dao.ClientRepository;
 import com.bankdata.securityAdmin.entity.Client;
-
-import jakarta.transaction.Transactional;
 
 @Service
 public class clientServiceImpl implements clientService{
 
     //Hacemos la injección de nuestro objeto cliente en nuestro servicio
-    public clientDAO clientDAO;
+    public ClientRepository clientRepository;
 
     @Autowired
-    public clientServiceImpl(clientDAO theClientDAO){
-        clientDAO = theClientDAO;
+    public clientServiceImpl(ClientRepository theClientRepository){
+        clientRepository = theClientRepository;
     }
 
     @Override
     public List<Client> findAll() {
-        return clientDAO.findAll();
+        return clientRepository.findAll();
     }
 
     @Override
-    public Client findClient(int id) {
-        return clientDAO.findClient(id);
+    public Client findById(int id) {
+        Optional<Client> result = clientRepository.findById(id);
+        Client theClient = null;
+        if (result.isPresent()) {
+            theClient = result.get();
+        }else{ //En caso de no encontrar el ID del cliente
+            throw new RuntimeException("Did not find client ID");
+        }
+        return theClient;
     }
 
-    @Transactional //Cada vez que nosotros realicemos una modificación a la DB ocuparemos la notación Transactional
     @Override
-    public Client saveClient(Client client) {
-        return clientDAO.saveClient(client);
+    public Client save(Client client) {
+        return clientRepository.save(client);
     }
 
-    @Transactional //Cada vez que nosotros realicemos una modificación a la DB ocuparemos la notación Transactional
     @Override
-    public void deleteBy(int id) {
-        clientDAO.deleteBy(id);
+    public void deleteById(int id) {
+        clientRepository.deleteById(id);
     }
     
 }
