@@ -16,7 +16,7 @@ public class clientImpl implements clientDAO {
 
     //Hacemos la injeccion de nuestro constructor
     @Autowired
-    private clientImpl(EntityManager client){
+    public clientImpl(EntityManager client){
         entityManager = client;
     }
 
@@ -24,7 +24,7 @@ public class clientImpl implements clientDAO {
     public List<Client> findAll(){
 
         // Creamos nuestro query
-        TypedQuery<Client> query = entityManager.createNamedQuery("from client", Client.class);
+        TypedQuery<Client> query = entityManager.createQuery("from Client", Client.class);
 
         // Mandamos a ejecutar el query
         List<Client> clientes = query.getResultList(); 
