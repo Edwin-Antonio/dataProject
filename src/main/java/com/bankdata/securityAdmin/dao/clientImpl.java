@@ -32,4 +32,33 @@ public class clientImpl implements clientDAO {
         // retornamos valores
         return clientes;
     }
+
+    @Override
+    public Client findClient(int id) {
+
+        Client clientId = entityManager.find(Client.class, id);
+
+        return clientId;
+    }
+
+    @Override
+    public Client saveClient(Client client) {
+        
+        //Guardamos valores de un cliente, si el ID llega a ser 0 hará un insert de caso contrario 
+        //sera un update en la base de datos
+        Client clientDB = entityManager.merge(client); 
+        
+        //Retornamos los valores del cliente
+        return clientDB;
+    }
+
+    @Override
+    public void deleteBy(int id) {
+        
+        //Primero encontramos el usuario que deseamos eliminar
+        Client deleteClient = entityManager.find(Client.class,id);
+
+        //Eliminamos usuairo
+        entityManager.remove(deleteClient);
+    }
 }
