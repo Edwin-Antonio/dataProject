@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
+    <div class="container rgba(var(--bs-secondary-bg-rgb), .5)">
         <h3> Add New Client</h3>
         <hr>
         <p class="h4 mb-4">Client</p>
@@ -21,6 +21,7 @@
 
             <button type="submit" class="btn btn-info col-2">Save</button>
         </form>
+        <a class="btn btn-warning col-2 mt-4" th:href="@{/list}">Back</a>
     </div>
 </body>
 </html>
