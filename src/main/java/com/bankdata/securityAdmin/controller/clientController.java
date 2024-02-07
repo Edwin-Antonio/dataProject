@@ -59,5 +59,12 @@ public class clientController {
         return "redirect:/list";
     }
 
+    @GetMapping("/deleteClient")
+    public String deleteClient(@RequestParam("clientId") int theId){
+        // Eliminamos cliente
+        clientService.deleteById(theId);
+        //Redirigimos a la pagina de nuestra lista
+        return "redirect:/list";
+    }
 
 }
