@@ -21,6 +21,7 @@
                     <th>First Name</th>
                     <th>Second Name</th>
                     <th>Email</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,9 @@
                     <td th:text="${tempClient.firstName}"></td>
                     <td th:text="${tempClient.secondName}"></td>
                     <td th:text="${tempClient.email}"></td>
+                    <td>
+                        <a class="btn btn-info btn-sm mt-3 mb-3" th:href="@{/formUpdateClient(clientId=${tempClient.id})}">Update</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

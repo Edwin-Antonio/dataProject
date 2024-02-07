@@ -14,6 +14,7 @@
         <p class="h4 mb-4">Client</p>
 
         <form action="#" th:action="@{/save}" th:object="${addClient}" method="post">
+            <input type="hidden" th:field="*{id}">
             <input class="form-control mb-4 w-25" type="text" th:field="*{firstName}" placeholder="First Name">
             <input class="form-control mb-4 w-25" type="text" th:field="*{secondName}" placeholder="Second Name">
             <input class="form-control mb-4 w-25" type="text" th:field="*{email}" placeholder="Email">
