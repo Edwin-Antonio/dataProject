@@ -33,6 +33,15 @@ public class clientController {
         return("listPage");
     }
 
+    @GetMapping("/leaderList")
+    public String clientLeaderList(Model model){
+        List<Client> theClients = clientService.findAll();
+
+        model.addAttribute("clientes", theClients);
+
+        return("leadersPage");
+    }
+
     @GetMapping("/formAddClient")
     public String showFormAddClient(Model model){
 
@@ -56,7 +65,7 @@ public class clientController {
     @PostMapping("/save")
     public String saveClient(@ModelAttribute("addClient") Client theClient){
         clientService.save(theClient);
-        return "redirect:/list";
+        return "redirect:/leaderList";
     }
 
     @GetMapping("/deleteClient")
@@ -64,7 +73,7 @@ public class clientController {
         // Eliminamos cliente
         clientService.deleteById(theId);
         //Redirigimos a la pagina de nuestra lista
-        return "redirect:/list";
+        return "redirect:/leaderList";
     }
 
 }

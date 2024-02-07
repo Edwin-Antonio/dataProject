@@ -14,7 +14,7 @@ public class secAdminController {
     //Mapeo para entrar a pagina de leaders o admins
     @GetMapping("/leaders")
     public String leadersAdministration(){
-        return "leadersPage";
+        return "redirect:/leaderList";
     }
 
     @GetMapping("/system")
