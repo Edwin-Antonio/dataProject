@@ -17,6 +17,11 @@ public class secAdminController {
         return "leadersPage";
     }
 
+    @GetMapping("/system")
+    public String systemsAdministration(){
+        return "redirect:/list";
+    }
+
     //Mapeo para accessos denegados
     @GetMapping("/access-denied")
     public String accessDenied(){

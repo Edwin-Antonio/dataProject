@@ -19,15 +19,13 @@
 
         <hr>
 
-        <div sec:authorize="hasRole('MANAGER')">
+        <p>
             <a class="btn btn-info btn-sm m-1" th:href="@{/leaders}">Manager Access</a>
-        </div>
+        </p>
 
-        <div sec:authorize="hasRole('ADMIN')">
-            <p>
-                <a class="btn btn-info btn-sm m-1" th:href="@{/list}">Admin Access</a>
-            </p>
-        </div>
+        <p>
+            <a class="btn btn-info btn-sm m-1" th:href="@{/system}">Admin Access</a>
+        </p>
         <hr>
 
         <form action="#" th:action="@{/logout}" method="POST">
