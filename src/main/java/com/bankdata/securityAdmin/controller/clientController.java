@@ -23,16 +23,6 @@ public class clientController {
         clientService = theClientService;
     }
 
-    //Agregamos el mapeo para nuestra lista
-    @GetMapping("/list")
-    public String clientList(Model model){
-        List<Client> theClients = clientService.findAll();
-
-        model.addAttribute("clientes", theClients);
-
-        return("listPage");
-    }
-
     @GetMapping("/leaderList")
     public String clientLeaderList(Model model){
         List<Client> theClients = clientService.findAll();
