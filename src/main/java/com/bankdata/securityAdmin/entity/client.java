@@ -1,5 +1,4 @@
 package com.bankdata.securityAdmin.entity;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +9,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "cliente")
 public class Client {
+    
     //definimos los campos de nuestra tabla
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -80,5 +80,5 @@ public class Client {
         return "Client [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", email=" + email
                 + "]";
     }
-    
+
 }
