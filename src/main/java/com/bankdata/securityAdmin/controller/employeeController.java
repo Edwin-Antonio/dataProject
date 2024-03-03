@@ -21,10 +21,10 @@ public class employeeController {
 
     //Agregamos el mapeo para nuestra lista
     @GetMapping("/list")
-    public String clientList(Model model){
-        List<Employee> theClients = employeeService.findAll();
+    public String employeeList(Model model){
+        List<Employee> theEmployees = employeeService.findAll();
 
-        model.addAttribute("empleados", theClients);
+        model.addAttribute("empleados", theEmployees);
 
         return("listPage");
     }
