@@ -10,7 +10,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "cliente")
 public class Client {
-    
     //definimos los campos de nuestra tabla
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
