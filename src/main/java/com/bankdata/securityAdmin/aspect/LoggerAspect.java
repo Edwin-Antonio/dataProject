@@ -28,7 +28,7 @@ public class LoggerAspect {
     private void serviceLogger() {
     }
 
-    // Tracking para nuestro modelo de controlador
+    // Tracking para nuestro modelo DAO
     @Pointcut("execution(* com.bankdata.securityAdmin.dao.*.*(..))")
     private void daoLogger() {
     }
