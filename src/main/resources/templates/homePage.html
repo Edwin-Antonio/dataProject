@@ -6,26 +6,107 @@
     <title>Home Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <style>
+            .linea-vertical {
+                border-left: 2px solid black; /* Cambiar el color y el grosor según necesites */
+                height: 400px; /* Altura de la línea */
+                width: 50px;
+            }
+        </style>
 </head>
 
 <body>
-    <div class="container m-3 w-100">
+    <div class="container m-3 ml-3 w-100">
         <div class="row text-center">
-            <div class="col">
-                <h2>Bienvenido a la Pagina Principal</h2>
+            <div class="col-8 bg-primary-subtle border border-primary-subtle rounded-3">
+                <h2 class="mt-3">Bienvenido a la Pagina Principal</h2>
             </div>
-            <div class="col-2">
+            <div class="col-4">
+                Usuario: 
                 <span sec:authentication="principal.username"></span>
                 <br><br>
-                Role(s): <span sec:authentication="principal.authorities"></span>
+                Role(s): <span class="text-primary" sec:authentication="principal.authorities"></span>
             </div>
         </div>
 
         <hr>
-
-        <p><a class="btn btn-info btn-sm m-1" th:href="@{/leaders}">Manager Access</a></p>
-        <p><a class="btn btn-info btn-sm m-1" th:href="@{/system}">Admin Access</a></p>
-
+        <div class="container p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
+            <div class="row justify-content-start">
+                <div class="col-1">
+                    <p>
+                        <a class="btn btn-info btn-sm m-1 icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" th:href="@{/leaders}">
+                            Manager Access
+                            <svg class="bi" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0M2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5z"/>
+                            </svg>
+                        </a>
+                    </p>
+                    <p>
+                        <a class="btn btn-info btn-sm m-1 icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" th:href="@{/system}">
+                            Admin Access
+                            <svg class="bi" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5"/>
+                                <path d="M3 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+                            </svg>
+                        </a>
+                    </p>
+                    <p>
+                        <a class="btn btn-info btn-sm m-1 icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" th:href="@{/leaders}">
+                            Control Access
+                            <svg class="bi" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5"/>
+                                <path d="M3 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+                            </svg>
+                        </a>
+                    </p>
+                    <p>
+                        <a class="btn btn-info btn-sm m-1 icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" th:href="@{/system}">
+                            Approve Changes
+                            <svg class="bi" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.854 5.146a.5.5 0 1 0-.708.708L9.243 9.95H6.475a.5.5 0 1 0 0 1h3.975a.5.5 0 0 0 .5-.5V6.475a.5.5 0 1 0-1 0v2.768z"/>
+                              </svg>
+                        </a>
+                    </p>
+                    <p>
+                        <a class="btn btn-info btn-sm m-1 icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" th:href="@{/leaders}">
+                            Off sourcing
+                            <svg class="bi" aria-hidden="true"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1"/>
+                              </svg>
+                        </a>
+                    </p>
+                    <p>
+                        <a class="btn btn-info btn-sm m-1 icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" th:href="@{/system}">
+                            DBA Access
+                            <svg class="bi" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0M2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5z"/>
+                            </svg>
+                        </a>
+                    </p>
+                </div>
+                <div class="col-md-auto">
+                    <div class="linea-vertical"></div>
+                </div>
+                <div class="col-8">
+                    <div class="clearfix">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBljDeA_S4RIY_dFUdVIOFEAMRXm30-vro6kEG0yMcLw&s" class="col-md-6 float-md-end mb-3 ms-md-3" alt="..." width="300px" height="300px">
+                      
+                        <p>
+                          A paragraph of placeholder text. We're using it here to show the use of the clearfix class. We're adding quite a few meaningless phrases here to demonstrate how the columns interact here with the floated image.
+                        </p>
+                      
+                        <p>
+                          As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.
+                        </p>
+                      
+                        <p>
+                          And yet, here you are, still persevering in reading this placeholder text, hoping for some more insights, or some hidden easter egg of content. A joke, perhaps. Unfortunately, there's none of that here.
+                        </p>
+                      </div>
+                </div>
+            </div>
+           
+        </div>
         <hr>
 
         <form action="#" th:action="@{/logout}" method="POST">
