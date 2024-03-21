@@ -63,12 +63,12 @@
                     <div class="col"></div>
                     <div class="col"></div>
                     <div class="col text-center">
-                        <label for="opciones">Selecciona una opción para navegar:</label>
-                        <select id="opciones" onchange="redirigirUsuario(this.value)">
+                        <label for="opciones">Opciones para navegar </label>
+                        <select class="fondo-rgb text-center" id="opciones" onchange="redirigirUsuario(this.value)">
                             <!-- Opciones del dropdown -->
-                            <option value="">Selecciona una opción</option>
+                            <option value="">Opciones</option>
                             <option th:value="@{/}">homePage</option>
-                            <option th:value="@{/leaders}">Client Lists</option>
+                            <option sec:authorize="hasRole('ADMIN')" th:value="@{/leaders}">Clients System</option>
                             <option th:value="@{/formAddClient}">Add New User</option>
                         </select>
                     </div>
