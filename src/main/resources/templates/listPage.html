@@ -33,92 +33,97 @@
 </head>
 
 <body>
-    <div class="container m-3 ml-3 w-100">
-        <div class="row text-center mt-2">
-            <div class="col-8 bg-success-subtle border border-warning-subtle rounded-3">
-                <h2 class="mt-2">Employes Page</h2>
-            </div>
-            <div class="col-4">
-                <div class="row justify-content-md-center">
-                    <div class="col-md-auto">
-                        <span class="input-group-text" id="basic-addon1" width="50px">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
-                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
-                            </svg>
-                        </span>
+    <div class="container bground-general">
+        <div class="container m-3 ml-3 w-100">
+            <div class="row"></div>
+            <div class="row text-center mt-2">
+                <div class="col-8 bg-success-subtle border border-warning-subtle rounded-3">
+                    <h2 class="mt-3">Employes Page</h2>
+                </div>
+                <div class="col-4">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-auto">
+                            <span class="input-group-text" id="basic-addon1" width="50px">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="col-md-auto">
+                            <span sec:authentication="principal.username"></span>
+                        </div>
                     </div>
-                    <div class="col-md-auto">
-                        <span sec:authentication="principal.username"></span>
+                    Role(s): <span class="text-primary" sec:authentication="principal.authorities"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col text-center">
+                        <label for="opciones">Selecciona una opción para navegar:</label>
+                        <select id="opciones" onchange="redirigirUsuario(this.value)">
+                            <!-- Opciones del dropdown -->
+                            <option value="">Selecciona una opción</option>
+                            <option th:value="@{/}">homePage</option>
+                            <option th:value="@{/leaders}">Client Lists</option>
+                            <option th:value="@{/formAddClient}">Add New User</option>
+                        </select>
                     </div>
                 </div>
-                Role(s): <span class="text-primary" sec:authentication="principal.authorities"></span>
             </div>
-        </div>
-        <hr>
-        <div class="container">
-            <div class="row">
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col text-center">
-                    <label for="opciones">Selecciona una opción para navegar:</label>
-                    <select id="opciones" onchange="redirigirUsuario(this.value)">
-                        <!-- Opciones del dropdown -->
-                        <option value="">Selecciona una opción</option>
-                        <option th:value="@{/}">homePage</option>
-                        <option th:value="@{/leaders}">Client Lists</option>
-                        <option th:value="@{/formAddClient}">Add New User</option>
-                    </select>
+            <hr>
+            <div class="container">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th>User ID</th>
+                            <th>Password</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>POD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="tempEmployee : ${empleados}">
+                            <td class="text-center" th:text="${tempEmployee.username}"></td>
+                            <td class="text-center" th:text="${tempEmployee.password}"></td>
+                            <td class="text-center" th:text="${tempEmployee.email}"></td>
+                            <td class="text-center text-success">Enabled</td>
+                            <td class="text-center">
+                                MarketZilla
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <div class="container text-center ">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-2">
+                        <a th:href="@{/formAddClient}" class="btn btn-primary btn-sm mb-3">Add Employee</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr>
-        <div class="container">
-            <table class="table table-bordered table-striped">
-                <thead class="table-primary text-center">
-                    <tr>
-                        <th>User ID</th>
-                        <th>Password</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="tempEmployee : ${empleados}">
-                        <td class="text-center" th:text="${tempEmployee.username}"></td>
-                        <td class="text-center" th:text="${tempEmployee.password}"></td>
-                        <td class="text-center" th:text="${tempEmployee.email}"></td>
-                        <td class="text-center text-success">Enabled</td>
-                        <td class="text-center">
-                            <!-- Button updating client -->
-                            <a class="btn btn-info btn-sm mt-3 mb-3" th:href="@{/formUpdateClient(clientId=${tempEmployee.username})}">Update</a>
-                            <!-- Button deleting client -->
-                            <a class="btn btn-danger btn-sm mt-3 mb-3" th:href="@{/deleteClient(clientId=${tempEmployee.username})}"
-                                onclick="if(!(confirm('Seguro que quieres eliminar el usuario ${tempEmployee.username}?'))) return false">Delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    
-        <div class="container text-center ">
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-2">
-                    <a th:href="@{/formAddClient}" class="btn btn-primary btn-sm mb-3">Add Employee</a>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col-auto">
+                        <div class="mb-3">
+                            <form action="#" th:action="@{/logout}" method="POST">
+                                <input class="fondo-rgb" type="submit" value="logout">
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="row"></div>
         </div>
-        <hr>
-        <label for="opciones">Selecciona una opción para navegar:</label>
-        <select id="opciones" onchange="redirigirUsuario(this.value)">
-            <!-- Opciones del dropdown -->
-            <option value="">Selecciona una opción</option>
-            <option th:value="@{/}">homePage</option>
-            <option value="https://www.ejemplo.com/opcion2">Opción 2</option>
-            <option value="https://www.ejemplo.com/opcion3">Opción 3</option>
-        </select>
-        <hr>
     </div>
     
 
