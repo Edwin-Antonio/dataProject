@@ -59,23 +59,99 @@
     
             <form action="#" th:action="@{/save}" th:object="${infoCliente}" method="post">
                 <input type="hidden" th:field="*{id}">
-                <p>Nombre</p>
-                <input class="form-control mb-4 w-25" type="text" th:field="*{firstName}" placeholder="First Name" disabled>
-                <p>Apellido</p>
-                <input class="form-control mb-4 w-25" type="text" th:field="*{secondName}" placeholder="Second Name" disabled>
-                <p>Correo</p>
-                <input class="form-control mb-4 w-25" type="text" th:field="*{email}" placeholder="Email" disabled>
+                <div class="row">
+                    <div class="col">
+                        <p>Nombre</p>
+                        <input class="form-control mb-4 w-75" type="text" th:field="*{firstName}" placeholder="First Name" disabled>
+                    </div>
+                    <div class="col">
+                        <p>Apellido</p>
+                        <input class="form-control mb-4 w-75" type="text" th:field="*{secondName}" placeholder="Second Name" disabled>
+                    </div>
+                    <div class="col">
+                        <p>Correo</p>
+                        <input class="form-control mb-4 w-75" type="text" th:field="*{email}" placeholder="Email" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>ID</p>
+                        <input class="form-control mb-4 w-75" type="text" th:field="*{id}" placeholder="First Name" disabled>
+                    </div>
+                    <div class="col">
+                        <p>Wallet Type</p>
+                        <input class="form-control mb-4 w-75" type="text" field="Google Play" value="Google Play" disabled>
+                    </div>
+                    <div class="col">
+                        <p>Card Type</p>
+                        <input class="form-control mb-4 w-75" type="text" value="Debit" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Card Number</p>
+                        <input class="form-control mb-4 w-75" type="text" field="$130,000" value="60112947569123" disabled>
+                    </div>
+                    <div class="col">
+                        <p>Exp Date</p>
+                        <input class="form-control mb-4 w-75" type="text" value="07/25" disabled>
+                    </div>
+                    <div class="col">
+                        <p>Token Exp Date</p>
+                        <input class="form-control mb-4 w-75" type="text" value="07/25" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Amount</p>
+                        <input class="form-control mb-4 w-75" type="text" field="$130,000" value="$ 130,000" disabled>
+                    </div>
+                    <div class="col">
+                        <p>Card Description</p>
+                        <input class="form-control mb-4 w-75" type="text" value="Rewards Card" disabled>
+                    </div>
+                    <div class="col">
+                        <p>Device Number</p>
+                        <input class="form-control mb-4 w-75" type="text" field="$130,000" value="1234" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <p>Device Type</p>
+                        <input class="form-control mb-4 w-75" type="text" value="Other" disabled>
+                    </div>
+                    <div class="col-8">
+                        <p>Notes</p>
+                        <input class="form-control mb-4 w-75" type="text" value="N/A" disabled>
+                    </div>
+                </div>
             </form>
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <a class="btn btn-warning col-2 mb-3" th:href="@{/leaderList}">Back</a>
+                        <a class="btn btn-warning col-2 mb-3 mt-4" th:href="@{/leaderList}">Back</a>
                     </div>
                 </div>
             </div>
 
             <div class="row"></div>
         </div>
+        <hr>
+
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col-auto">
+                    <div class="mb-3">
+                        <form action="#" th:action="@{/logout}" method="POST">
+                            <input class="fondo-rgb" type="submit" value="logout">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row"></div>
     </div>
     
 </body>
