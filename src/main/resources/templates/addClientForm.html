@@ -1,27 +1,153 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://thymeleaf.org" >
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Client Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* Estilos opcionales para mejorar la apariencia del dropdown */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .fondo-rgb {
+            background-color: rgba(25, 97, 230, 0.395);
+            /* Rojo puro (255, 0, 0) */
+            border-radius: 10px;
+        }
+
+        .bradius {
+            border-radius: 10px;
+        }
+
+        .bground-general {
+            background-color: rgba(18, 243, 134, 0.26);
+            border-radius: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container rgba(var(--bs-secondary-bg-rgb), .5)">
-        <h3> Add New Client</h3>
-        <hr>
-        <p class="h4 mb-4">Client</p>
+    <div class="container bground-general">
+        <div class="container rgba(var(--bs-secondary-bg-rgb), .5)">
+            <div class="container">
+                <div class="row"></div>
+                <div class="row text-center mt-3">
+                    <div class="col-8 fondo-rgb border border-warning-subtle rounded-3">
+                        <h2 class="mt-3">Add New Client</h2>
+                    </div>
+                    <div class="col-4">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-auto mt-3">
+                                <span class="input-group-text" id="basic-addon1" width="50px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+                                        <path fill-rule="evenodd"
+                                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1">
+                                        </path>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="col-md-auto justify-content-start mt-3">
+                                <span sec:authentication="principal.username"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="h4 mb-4">Client</p>
 
-        <form action="#" th:action="@{/save}" th:object="${addClient}" method="post">
-            <input type="hidden" th:field="*{id}">
-            <input class="form-control mb-4 w-25" type="text" th:field="*{firstName}" placeholder="First Name">
-            <input class="form-control mb-4 w-25" type="text" th:field="*{secondName}" placeholder="Second Name">
-            <input class="form-control mb-4 w-25" type="text" th:field="*{email}" placeholder="Email">
+            
 
-            <button type="submit" class="btn btn-info col-2">Save</button>
-        </form>
-        <a class="btn btn-warning col-2 mt-4" th:href="@{/leaderList}">Back</a>
+            <form action="#" th:action="@{/save}" th:object="${addClient}" method="post">
+                <input type="hidden" th:field="*{id}">
+                <div class="row">
+                    <div class="col">
+                        <p>Name</p>
+                        <input class="form-control mb-4 w-75" type="text" th:field="*{firstName}" placeholder="First Name">
+                    </div>
+                    <div class="col">
+                        <p>Last Namer</p>
+                        <input class="form-control mb-4 w-75" type="text" th:field="*{secondName}" placeholder="Second Name">
+                    </div>
+                    <div class="col">
+                        <p>email</p>
+                        <input class="form-control mb-4 w-75" type="text" th:field="*{email}" placeholder="Email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Wallet Type</p>
+                        <input class="form-control mb-4 w-75" type="text" field="Google Play" placeholder="Google/Amazon/PayPal/..">
+                    </div>
+                    <div class="col">
+                        <p>Card Type</p>
+                        <input class="form-control mb-4 w-75" type="text" placeholder="Credit/Debit" >
+                    </div>
+                    <div class="col">
+                        <p>Card Number</p>
+                        <input class="form-control mb-4 w-75" type="text" field="$130,000" placeholder="Number" >
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Exp Date</p>
+                        <input class="form-control mb-4 w-75" type="text" placeholder="MM/YY" >
+                    </div>
+                    <div class="col">
+                        <p>Token Exp Date</p>
+                        <input class="form-control mb-4 w-75" type="text" placeholder="MM/YY" >
+                    </div>
+                    <div class="col">
+                        <p>Amount</p>
+                        <input class="form-control mb-4 w-75" type="text" placeholder="$" >
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Card Description</p>
+                        <input class="form-control mb-4 w-75" type="text" placeholder="Description" >
+                    </div>
+                    <div class="col">
+                        <p>Device Number</p>
+                        <input class="form-control mb-4 w-75" type="text" placeholder="Device Number">
+                    </div>
+                    <div class="col-4">
+                        <p>Device Type</p>
+                        <input class="form-control mb-4 w-75" placeholder="Type" >
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <p>Notes</p>
+                        <input class="form-control mb-4 w-75" type="text" placeholder="Comments" >
+                    </div>
+                </div>
+                <div class="row row-cols-4 mb-3">
+                    <div class="col">
+                        <button type="submit" class="btn btn-info col-8">Save</button>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-warning col-8 mb" th:href="@{/leaderList}">Back</a>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="row"></div>
+            </form>
+        </div>
     </div>
 </body>
+
 </html>

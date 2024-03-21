@@ -52,6 +52,17 @@ public class clientController {
         return "/addClientForm";
     }
 
+    @GetMapping("/formInfoClient")
+    public String infoClient(@RequestParam("clientId") int theId, Model model){
+        //Obtenemos el servicio del cliente
+        Client theClient = clientService.findById(theId);
+        // insertamos al cliente en el modelo **NOTA** Si se trata de actualizar forzosamente en nuestro formulario debemos poner un campo
+        // con el ID de nuestro objeto de forma escondida
+        model.addAttribute("infoCliente",theClient); // El atributo que colocamos aquí es el que usamos para nuestro metodo guardar
+        // mandamos la informacion a nuestro formulario
+        return "/infoClientForm";
+    }
+
     @PostMapping("/save")
     public String saveClient(@ModelAttribute("addClient") Client theClient){
         clientService.save(theClient);
